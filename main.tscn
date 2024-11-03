@@ -6,13 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://b34u7h77nhjyj" path="res://Phone/phone.tscn" id="4_fw08k"]
 [ext_resource type="Script" path="res://GameManager.gd" id="4_vv37o"]
 
-[node name="Node3D" type="Node3D"]
+[node name="GameManager" type="Node3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("4_vv37o")
+camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("tableNode", "personNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.911009)
 script = ExtResource("1_qhl4y")
 tableNode = NodePath("../Room/CameraSnapPoint")
 personNode = NodePath("../Room/Sprite3D")
+
+[node name="ItemSnapPoint" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.3)
 
 [node name="Room" type="Node3D" parent="."]
 
@@ -26,11 +31,10 @@ texture = ExtResource("3_p1eau")
 [node name="CameraSnapPoint" type="Node3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33498, 0.53507)
 
-[node name="ItemBody" parent="Room" instance=ExtResource("4_fw08k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454168, 1.35816, 0)
+[node name="ItemBody" parent="Room" node_paths=PackedStringArray("camera", "snapPoint") instance=ExtResource("4_fw08k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454168, 1.35241, -0.389487)
+camera = NodePath("../../Camera3D")
+snapPoint = NodePath("../../Camera3D/ItemSnapPoint")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.572389, 0.819982, 0, -0.819982, 0.572389, 0, 13.5407, 13.8204)
-
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("4_vv37o")

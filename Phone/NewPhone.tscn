@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd72hb0b720f0"]
+
+[ext_resource type="PackedScene" uid="uid://evgf3b3x088k" path="res://Test/InteractableObject.tscn" id="1_akg50"]
+[ext_resource type="Texture2D" uid="uid://dek4y1whtf1mq" path="res://Scene/Models/phone.png" id="2_0fagd"]
+[ext_resource type="Script" path="res://Phone/ItemSprite.gd" id="3_ywmn7"]
+[ext_resource type="Script" path="res://Phone/ScreenManager.gd" id="4_2friq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ycvo"]
+
+[node name="Phone" type="Node3D"]
+
+[node name="InteractableObject" parent="." node_paths=PackedStringArray("collisionShape") instance=ExtResource("1_akg50")]
+collisionShape = NodePath("shape")
+
+[node name="shape" type="CollisionShape3D" parent="InteractableObject"]
+shape = SubResource("BoxShape3D_7ycvo")
+
+[node name="ItemSprite" type="Sprite3D" parent="."]
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_0fagd")
+script = ExtResource("3_ywmn7")
+
+[node name="Screen" type="Node3D" parent="ItemSprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00987403, 0)
+script = ExtResource("4_2friq")

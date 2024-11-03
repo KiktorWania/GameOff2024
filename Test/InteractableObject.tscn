@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://evgf3b3x088k"]
+
+[ext_resource type="Script" path="res://Test/InteractableObject.gd" id="1_c7wb4"]
+
+[node name="InteractableObject" type="Area3D" node_paths=PackedStringArray("collisionShape")]
+script = ExtResource("1_c7wb4")
+collisionShape = NodePath("")

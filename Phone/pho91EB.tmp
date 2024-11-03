@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://b34u7h77nhjyj"]
+
+[ext_resource type="Script" path="res://StaticBody3D.gd" id="1_5nfkr"]
+[ext_resource type="Texture2D" uid="uid://dek4y1whtf1mq" path="res://Scene/Models/phone.png" id="1_pqp6l"]
+[ext_resource type="Script" path="res://Phone/ItemSprite.gd" id="3_1sy8b"]
+[ext_resource type="PackedScene" uid="uid://evgf3b3x088k" path="res://Test/InteractableObject.tscn" id="4_d0aee"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwdjt"]
+size = Vector3(0.178711, 0.0136719, 0.267578)
+
+[node name="ItemBody" type="Area3D"]
+script = ExtResource("1_5nfkr")
+
+[node name="shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0128326)
+shape = SubResource("BoxShape3D_lwdjt")
+
+[node name="ItemSprite" type="Sprite3D" parent="."]
+axis = 1
+texture_filter = 0
+texture = ExtResource("1_pqp6l")
+script = ExtResource("3_1sy8b")
+
+[node name="InteractableObject" parent="ItemSprite" instance=ExtResource("4_d0aee")]

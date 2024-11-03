@@ -4,23 +4,17 @@ class_name ItemSprite
 var camera : Camera3D
 var originalPos : Transform3D
 
-var newPos : Transform3D
-var b = false
+var hoveredPos : Transform3D
+var hovered = false
 
 func _ready():
 	camera = get_viewport().get_camera_3d()
 	originalPos = transform
+	hoveredPos = originalPos
+	hoveredPos.origin.y += .1
 
 func _physics_process(delta):
-	if(b):
-		transform = transform.interpolate_with(newPos, 0.2)
+	if(hovered):
+		transform = transform.interpolate_with(hoveredPos, 0.2)
 	else:
 		transform = transform.interpolate_with(originalPos, 0.2)
-
-func hoover():
-	newPos = originalPos
-	newPos.origin.y += .1
-	b = true
-	
-func lay():
-	b = false

@@ -1,14 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://b34u7h77nhjyj"]
+[gd_scene load_steps=9 format=3 uid="uid://b34u7h77nhjyj"]
 
 [ext_resource type="Script" path="res://StaticBody3D.gd" id="1_5nfkr"]
 [ext_resource type="Texture2D" uid="uid://dek4y1whtf1mq" path="res://Scene/Models/phone.png" id="1_pqp6l"]
 [ext_resource type="Script" path="res://Phone/ItemSprite.gd" id="3_1sy8b"]
+[ext_resource type="PackedScene" uid="uid://evgf3b3x088k" path="res://Test/InteractableObject.tscn" id="4_d0aee"]
+[ext_resource type="Script" path="res://Phone/ScreenManager.gd" id="4_qxjtd"]
+[ext_resource type="Texture2D" uid="uid://cf56w5vvsq823" path="res://Scene/Models/1.png" id="4_sftid"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwdjt"]
 size = Vector3(0.178711, 0.0136719, 0.267578)
 
-[node name="ItemBody" type="StaticBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_tq4mx"]
+
+[node name="ItemBody" type="Area3D" node_paths=PackedStringArray("collisionShape")]
 script = ExtResource("1_5nfkr")
+collisionShape = NodePath("shape")
 
 [node name="shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0128326)
@@ -19,3 +25,22 @@ axis = 1
 texture_filter = 0
 texture = ExtResource("1_pqp6l")
 script = ExtResource("3_1sy8b")
+
+[node name="Screen" type="Node3D" parent="ItemSprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00987403, 0)
+script = ExtResource("4_qxjtd")
+
+[node name="InteractableObject" parent="ItemSprite/Screen" node_paths=PackedStringArray("collisionShape") instance=ExtResource("4_d0aee")]
+active = false
+collisionShape = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemSprite/Screen/InteractableObject"]
+shape = SubResource("BoxShape3D_tq4mx")
+disabled = true
+
+[node name="Sprite3D" type="Sprite3D" parent="ItemSprite/Screen/InteractableObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00554633, 0)
+pixel_size = 0.002
+axis = 1
+texture_filter = 0
+texture = ExtResource("4_sftid")
