@@ -1,23 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://b34u7h77nhjyj"]
+[gd_scene load_steps=6 format=3 uid="uid://b34u7h77nhjyj"]
 
-[ext_resource type="Script" path="res://StaticBody3D.gd" id="1_5nfkr"]
-[ext_resource type="Texture2D" uid="uid://dek4y1whtf1mq" path="res://Scene/Models/phone.png" id="1_pqp6l"]
-[ext_resource type="Script" path="res://Phone/ItemSprite.gd" id="3_1sy8b"]
-[ext_resource type="PackedScene" uid="uid://evgf3b3x088k" path="res://Test/InteractableObject.tscn" id="4_d0aee"]
-[ext_resource type="Script" path="res://Phone/ScreenManager.gd" id="4_qxjtd"]
-[ext_resource type="Texture2D" uid="uid://cf56w5vvsq823" path="res://Scene/Models/1.png" id="4_sftid"]
+[ext_resource type="Texture2D" uid="uid://dek4y1whtf1mq" path="res://Sprites/phone.png" id="1_pqp6l"]
+[ext_resource type="Script" path="res://Phone/PhoneSprite.gd" id="3_1sy8b"]
+[ext_resource type="PackedScene" uid="uid://ct3n3qje6ctvd" path="res://Phone/Screens/LockScreen/LockScreen.tscn" id="5_hypep"]
+
+[sub_resource type="GDScript" id="GDScript_8ra0b"]
+script/source = "extends Clickable
+
+var picked = false
+
+var original_transform : Transform3D
+@export var camera : Camera3D
+
+@onready var sprite : ItemSprite = $ItemSprite
+@onready var shape : CollisionShape3D = $shape
+@onready var screen = $LockScreen
+
+@export var snapPoint : Node3D
+
+signal on_pick
+
+func _ready():
+	original_transform = transform
+
+func _process(delta):
+	super(delta)
+	if(Input.is_action_just_pressed(\"PutDown\") and picked):
+		picked = false
+		shape.disabled = false
+
+func _physics_process(delta):
+	screen.visible = picked
+	
+	if(picked):
+		transform = transform.interpolate_with(snapPoint.global_transform, 0.2)
+	if(!picked):
+		transform = transform.interpolate_with(original_transform, 0.2)
+
+func on_mouse_enter():
+	super()
+	sprite.hovered = true
+func on_mouse_exit():
+	super()
+	sprite.hovered = false
+
+func on_click():
+	if(!picked):
+		picked = true
+		shape.disabled = true
+		sprite.hovered = false
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lwdjt"]
 size = Vector3(0.178711, 0.0136719, 0.267578)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tq4mx"]
-
-[node name="ItemBody" type="Area3D" node_paths=PackedStringArray("collisionShape")]
-script = ExtResource("1_5nfkr")
-collisionShape = NodePath("shape")
+[node name="ItemBody" type="Area3D"]
+script = SubResource("GDScript_8ra0b")
 
 [node name="shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0128326)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0213192, 0.0128326)
 shape = SubResource("BoxShape3D_lwdjt")
 
 [node name="ItemSprite" type="Sprite3D" parent="."]
@@ -26,21 +67,5 @@ texture_filter = 0
 texture = ExtResource("1_pqp6l")
 script = ExtResource("3_1sy8b")
 
-[node name="Screen" type="Node3D" parent="ItemSprite"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00987403, 0)
-script = ExtResource("4_qxjtd")
-
-[node name="InteractableObject" parent="ItemSprite/Screen" node_paths=PackedStringArray("collisionShape") instance=ExtResource("4_d0aee")]
-active = false
-collisionShape = NodePath("CollisionShape3D")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ItemSprite/Screen/InteractableObject"]
-shape = SubResource("BoxShape3D_tq4mx")
-disabled = true
-
-[node name="Sprite3D" type="Sprite3D" parent="ItemSprite/Screen/InteractableObject"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00554633, 0)
-pixel_size = 0.002
-axis = 1
-texture_filter = 0
-texture = ExtResource("4_sftid")
+[node name="LockScreen" parent="." instance=ExtResource("5_hypep")]
+transform = Transform3D(0.23, 0, 0, 0, -1.00536e-08, 0.23, 0, -0.23, -1.00536e-08, 0, 0.0139449, 0)

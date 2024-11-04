@@ -1,0 +1,260 @@
+[gd_scene load_steps=8 format=3 uid="uid://ct3n3qje6ctvd"]
+
+[ext_resource type="Script" path="res://Phone/Screens/LockScreen/LockScreen.gd" id="1_j0vbi"]
+[ext_resource type="Texture2D" uid="uid://dw125qvrfypee" path="res://Sprites/point-blank.png" id="2_cp0ft"]
+[ext_resource type="Texture2D" uid="uid://dhm5jdwpm1opc" path="res://Sprites/point-full.png" id="3_jap8i"]
+[ext_resource type="PackedScene" uid="uid://bxwk4morc5pmt" path="res://Phone/Widgets/Button/PhoneButton.tscn" id="4_lcjdw"]
+
+[sub_resource type="Animation" id="Animation_a4xp1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.075, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.025, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D2:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.025, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D3:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite3D4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.075, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite3D4:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_v0paf"]
+resource_name = "denied"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.075, 0, 0), Vector3(-0.075, 0.0202368, 0), Vector3(-0.075, -0.0102496, 0), Vector3(-0.075, 1.49459e-05, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_cp0ft")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05, 0.15, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.025, 0, 0), Vector3(-0.025, 0.02, 0), Vector3(-0.025, -0.01, 0), Vector3(-0.025, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D2:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_cp0ft")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.025, 0, 0), Vector3(0.025, 0.02, 0), Vector3(0.025, -0.01, 0), Vector3(0.025, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.15, 0.25, 0.35, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.075, 0, 0), Vector3(0.075, 0.02, 0), Vector3(0.075, -0.01, 0), Vector3(0.075, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite3D3:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_cp0ft")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite3D4:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_cp0ft")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ckn7"]
+_data = {
+"RESET": SubResource("Animation_a4xp1"),
+"denied": SubResource("Animation_v0paf")
+}
+
+[node name="LockScreen" type="Node3D"]
+script = ExtResource("1_j0vbi")
+blankIcon = ExtResource("2_cp0ft")
+fullIcon = ExtResource("3_jap8i")
+
+[node name="Clickable" parent="." instance=ExtResource("4_lcjdw")]
+customValue = "2"
+
+[node name="Clickable2" parent="." instance=ExtResource("4_lcjdw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187114, 0, 0)
+customValue = "3"
+
+[node name="Clickable3" parent="." instance=ExtResource("4_lcjdw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184342, 0, 0)
+customValue = "1"
+
+[node name="password" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.163813, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="password"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075, 0, 0)
+pixel_size = 0.002
+texture_filter = 0
+texture = ExtResource("2_cp0ft")
+
+[node name="Sprite3D2" type="Sprite3D" parent="password"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0, 0)
+pixel_size = 0.002
+texture_filter = 0
+texture = ExtResource("2_cp0ft")
+
+[node name="Sprite3D3" type="Sprite3D" parent="password"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0, 0)
+pixel_size = 0.002
+texture_filter = 0
+texture = ExtResource("2_cp0ft")
+
+[node name="Sprite3D4" type="Sprite3D" parent="password"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075, 0, 0)
+pixel_size = 0.002
+texture_filter = 0
+texture = ExtResource("2_cp0ft")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="password"]
+libraries = {
+"": SubResource("AnimationLibrary_4ckn7")
+}

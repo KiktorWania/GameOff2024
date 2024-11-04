@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dek4y1whtf1mq"
-path.s3tc="res://.godot/imported/phone.png-be040ea9f69ff5d40fcd1945d8ef6ef7.s3tc.ctex"
+uid="uid://dw125qvrfypee"
+path.s3tc="res://.godot/imported/point-blank.png-458cc6239b4a3455118bdb611e6735e7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Scene/Models/phone.png"
-dest_files=["res://.godot/imported/phone.png-be040ea9f69ff5d40fcd1945d8ef6ef7.s3tc.ctex"]
+source_file="res://Sprites/point-blank.png"
+dest_files=["res://.godot/imported/point-blank.png-458cc6239b4a3455118bdb611e6735e7.s3tc.ctex"]
 
 [params]
 

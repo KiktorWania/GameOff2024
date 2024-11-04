@@ -1,14 +1,14 @@
 extends Sprite3D
 class_name ItemSprite
 
-var camera : Camera3D
+#todo get rid off this shit
+
 var originalPos : Transform3D
 
 var hoveredPos : Transform3D
 var hovered = false
 
 func _ready():
-	camera = get_viewport().get_camera_3d()
 	originalPos = transform
 	hoveredPos = originalPos
 	hoveredPos.origin.y += .1
