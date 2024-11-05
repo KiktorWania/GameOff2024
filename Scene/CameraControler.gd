@@ -38,6 +38,9 @@ func _physics_process(delta):
 			focusedClickable = clicked
 			focusedClickable.on_mouse_enter()
 	else:
-		if(focusedClickable != null):
-			focusedClickable.on_mouse_exit()
-			focusedClickable = null
+		clearFocus()
+			
+func clearFocus():
+	if(focusedClickable != null):
+		focusedClickable.on_mouse_exit()
+		focusedClickable = null

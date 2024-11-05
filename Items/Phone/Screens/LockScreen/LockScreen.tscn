@@ -1,9 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct3n3qje6ctvd"]
+[gd_scene load_steps=18 format=3 uid="uid://ct3n3qje6ctvd"]
 
-[ext_resource type="Script" path="res://Phone/Screens/LockScreen/LockScreen.gd" id="1_j0vbi"]
-[ext_resource type="Texture2D" uid="uid://dw125qvrfypee" path="res://Sprites/point-blank.png" id="2_cp0ft"]
-[ext_resource type="Texture2D" uid="uid://dhm5jdwpm1opc" path="res://Sprites/point-full.png" id="3_jap8i"]
-[ext_resource type="PackedScene" uid="uid://bxwk4morc5pmt" path="res://Phone/Widgets/Button/PhoneButton.tscn" id="4_lcjdw"]
+[ext_resource type="Script" path="res://Items/Phone/Screens/LockScreen/LockScreen.gd" id="1_wmf2p"]
+[ext_resource type="Texture2D" uid="uid://dw125qvrfypee" path="res://Sprites/point-blank.png" id="2_uiuxt"]
+[ext_resource type="Texture2D" uid="uid://dhm5jdwpm1opc" path="res://Sprites/point-full.png" id="3_jx6yw"]
+[ext_resource type="PackedScene" uid="uid://bxwk4morc5pmt" path="res://Items/Phone/Widgets/Button/PhoneButton.tscn" id="4_prhmr"]
+[ext_resource type="Texture2D" uid="uid://k2qitpqjmab3" path="res://Sprites/0.png" id="5_r5uov"]
+[ext_resource type="Texture2D" uid="uid://cf56w5vvsq823" path="res://Sprites/1.png" id="6_bme7g"]
+[ext_resource type="Texture2D" uid="uid://bwe03rvbp0wti" path="res://Sprites/2.png" id="7_hi1xf"]
+[ext_resource type="Texture2D" uid="uid://cigx3pp4t2b2e" path="res://Sprites/3.png" id="8_fhv74"]
+[ext_resource type="Texture2D" uid="uid://c077d6h7rqy2s" path="res://Sprites/4.png" id="9_5g7d8"]
+[ext_resource type="Texture2D" uid="uid://kkj30fyl8lu6" path="res://Sprites/5.png" id="10_if1rx"]
+[ext_resource type="Texture2D" uid="uid://byglx6acegepk" path="res://Sprites/6.png" id="11_pp58j"]
+[ext_resource type="Texture2D" uid="uid://chd1jueod61q" path="res://Sprites/7.png" id="12_p1unm"]
+[ext_resource type="Texture2D" uid="uid://bdd20mxonfili" path="res://Sprites/8.png" id="13_h487p"]
+[ext_resource type="Texture2D" uid="uid://ch0l6ois54gcm" path="res://Sprites/9.png" id="14_7ejng"]
 
 [sub_resource type="Animation" id="Animation_a4xp1"]
 length = 0.001
@@ -26,10 +36,10 @@ tracks/1/path = NodePath("Sprite3D:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [ExtResource("2_uiuxt")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -50,10 +60,10 @@ tracks/3/path = NodePath("Sprite3D2:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [ExtResource("2_uiuxt")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -74,10 +84,10 @@ tracks/5/path = NodePath("Sprite3D3:texture")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [ExtResource("2_uiuxt")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -98,10 +108,10 @@ tracks/7/path = NodePath("Sprite3D4:texture")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [ExtResource("2_uiuxt")]
 }
 
 [sub_resource type="Animation" id="Animation_v0paf"]
@@ -130,7 +140,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_cp0ft")]
+"values": [ExtResource("2_uiuxt")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -154,7 +164,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.45),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_cp0ft")]
+"values": [ExtResource("2_uiuxt")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -190,7 +200,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_cp0ft")]
+"values": [ExtResource("2_uiuxt")]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -202,7 +212,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0.55),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_cp0ft")]
+"values": [ExtResource("2_uiuxt")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ckn7"]
@@ -212,20 +222,58 @@ _data = {
 }
 
 [node name="LockScreen" type="Node3D"]
-script = ExtResource("1_j0vbi")
-blankIcon = ExtResource("2_cp0ft")
-fullIcon = ExtResource("3_jap8i")
+script = ExtResource("1_wmf2p")
+blankIcon = ExtResource("2_uiuxt")
+fullIcon = ExtResource("3_jx6yw")
 
-[node name="Clickable" parent="." instance=ExtResource("4_lcjdw")]
+[node name="Clickable0" parent="." instance=ExtResource("4_prhmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+customTexture = ExtResource("5_r5uov")
 customValue = "2"
 
-[node name="Clickable2" parent="." instance=ExtResource("4_lcjdw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.187114, 0, 0)
+[node name="Clickable1" parent="." instance=ExtResource("4_prhmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+customTexture = ExtResource("6_bme7g")
+customValue = "1"
+
+[node name="Clickable2" parent="." instance=ExtResource("4_prhmr")]
+customTexture = ExtResource("7_hi1xf")
+customValue = "2"
+
+[node name="Clickable3" parent="." instance=ExtResource("4_prhmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+customTexture = ExtResource("8_fhv74")
 customValue = "3"
 
-[node name="Clickable3" parent="." instance=ExtResource("4_lcjdw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.184342, 0, 0)
-customValue = "1"
+[node name="Clickable4" parent="." instance=ExtResource("4_prhmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.2, 0)
+customTexture = ExtResource("9_5g7d8")
+customValue = "4"
+
+[node name="Clickable5" parent="." instance=ExtResource("4_prhmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+customTexture = ExtResource("10_if1rx")
+customValue = "5"
+
+[node name="Clickable6" parent="." instance=ExtResource("4_prhmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.2, 0)
+customTexture = ExtResource("11_pp58j")
+customValue = "6"
+
+[node name="Clickable7" parent="." instance=ExtResource("4_prhmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.4, 0)
+customTexture = ExtResource("12_p1unm")
+customValue = "7"
+
+[node name="Clickable8" parent="." instance=ExtResource("4_prhmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+customTexture = ExtResource("13_h487p")
+customValue = "8"
+
+[node name="Clickable9" parent="." instance=ExtResource("4_prhmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.4, 0)
+customTexture = ExtResource("14_7ejng")
+customValue = "9"
 
 [node name="password" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.163813, 0)
@@ -233,26 +281,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.163813, 0)
 [node name="Sprite3D" type="Sprite3D" parent="password"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075, 0, 0)
 pixel_size = 0.002
+no_depth_test = true
+alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("2_cp0ft")
+texture = ExtResource("2_uiuxt")
 
 [node name="Sprite3D2" type="Sprite3D" parent="password"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 0, 0)
 pixel_size = 0.002
+no_depth_test = true
+alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("2_cp0ft")
+texture = ExtResource("2_uiuxt")
 
 [node name="Sprite3D3" type="Sprite3D" parent="password"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0, 0)
 pixel_size = 0.002
+no_depth_test = true
+alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("2_cp0ft")
+texture = ExtResource("2_uiuxt")
 
 [node name="Sprite3D4" type="Sprite3D" parent="password"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075, 0, 0)
 pixel_size = 0.002
+no_depth_test = true
+alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("2_cp0ft")
+texture = ExtResource("2_uiuxt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="password"]
 libraries = {

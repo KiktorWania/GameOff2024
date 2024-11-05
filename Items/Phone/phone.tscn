@@ -1,0 +1,135 @@
+[gd_scene load_steps=11 format=3 uid="uid://b34u7h77nhjyj"]
+
+[ext_resource type="Texture2D" uid="uid://dek4y1whtf1mq" path="res://Sprites/phone.png" id="1_pqp6l"]
+[ext_resource type="Script" path="res://Items/Phone/PhoneSprite.gd" id="3_1sy8b"]
+[ext_resource type="Script" path="res://Items/Phone/DragArea.gd" id="4_dc1l6"]
+[ext_resource type="Script" path="res://Items/Phone/MeshInstance3D.gd" id="5_fn8mv"]
+[ext_resource type="PackedScene" uid="uid://ct3n3qje6ctvd" path="res://Items/Phone/Screens/LockScreen/LockScreen.tscn" id="5_hypep"]
+
+[sub_resource type="GDScript" id="GDScript_8ra0b"]
+script/source = "extends Pickable
+class_name PickableItem
+
+@onready var dragableArea : Clickable = $DragArea
+var dragDst
+var dir : Vector3
+var dragging
+var newPos : Vector3
+var dragged = false
+
+@onready var mesh : test = $MeshInstance3D
+
+@onready var screen = $LockScreen
+signal on_pick
+
+func _ready():
+	original_transform = transform
+
+func _process(delta):
+	super(delta)
+	mesh.hovered = focus
+	screen.visible = picked
+	if(Input.is_action_just_pressed(\"PutDown\") and picked):
+		picked = false
+		shape.disabled = false
+
+func while_picked():
+	if(dragging):
+		dragged = true
+		dragableArea.scale = Vector3(10, 1, 10)
+		var newTrans = transform
+		newTrans.origin = newPos
+		print(newTrans.origin)
+		transform = transform.interpolate_with(newTrans, 0.2)
+	elif !dragged:
+		transform = transform.interpolate_with(snapPoint.global_transform, 0.2)
+	else:
+		dragableArea.scale = Vector3(1, 1, 1)
+
+func while_not_picked():
+	dragged = false
+	transform = transform.interpolate_with(original_transform, 0.2)
+	
+func _input(event):
+	var mouse = get_viewport().get_mouse_position()
+	var m = Vector3(mouse.x, mouse.y, position.z)
+	
+	var space_state = get_world_3d().direct_space_state
+	
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_origin = get_viewport().get_camera_3d().project_ray_origin(mouse)
+	var ray_end = ray_origin + get_viewport().get_camera_3d().project_ray_normal(mouse) * 2000
+	
+	var params = PhysicsRayQueryParameters3D.new()
+	params.from = ray_origin
+	params.to = ray_end
+	params.collide_with_areas = true
+	
+	var intersection = space_state.intersect_ray(params)
+	if(!intersection.is_empty()):
+		var pos = intersection.get(\"position\")
+		m = Vector3(pos.x, pos.y, position.z)
+	
+	
+	if(event is InputEventMouseButton):
+		if event.is_pressed() and dragableArea.focus:
+			dragDst = position.distance_to(m)
+			dir = (m - position).normalized()
+			dragging = true
+			newPos = m - dragDst * dir
+		else:
+			dragging = false
+	elif (event is InputEventMouseMotion):
+		if dragging:
+			newPos = m - dragDst * dir
+	
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwdjt"]
+size = Vector3(0.178711, 0.0136719, 0.267578)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8056g"]
+size = Vector3(0.174, 0, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j4u0"]
+albedo_texture = ExtResource("1_pqp6l")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0hms0"]
+size = Vector3(0.18, 0, 0.27)
+
+[node name="ItemBody" type="Area3D" node_paths=PackedStringArray("shape", "mainSprite")]
+script = SubResource("GDScript_8ra0b")
+shape = NodePath("shape")
+mainSprite = NodePath("ItemSprite")
+
+[node name="shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0213192, 0.0128326)
+shape = SubResource("BoxShape3D_lwdjt")
+
+[node name="LockScreen" parent="." instance=ExtResource("5_hypep")]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, -0.0365798)
+
+[node name="ItemSprite" type="Sprite3D" parent="."]
+visible = false
+axis = 1
+double_sided = false
+no_depth_test = true
+texture_filter = 0
+render_priority = -1
+texture = ExtResource("1_pqp6l")
+script = ExtResource("3_1sy8b")
+
+[node name="DragArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
+script = ExtResource("4_dc1l6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DragArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00300601, 0.00362223)
+shape = SubResource("BoxShape3D_8056g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_3j4u0")
+mesh = SubResource("BoxMesh_0hms0")
+script = ExtResource("5_fn8mv")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

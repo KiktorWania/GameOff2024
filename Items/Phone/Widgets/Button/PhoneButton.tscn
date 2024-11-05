@@ -1,17 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxwk4morc5pmt"]
 
-[ext_resource type="Script" path="res://Phone/Widgets/Button/PhoneButton.gd" id="1_elyul"]
-[ext_resource type="Texture2D" uid="uid://cf56w5vvsq823" path="res://Sprites/1.png" id="2_tyhrp"]
+[ext_resource type="Script" path="res://Items/Phone/Widgets/Button/PhoneButton.gd" id="1_0180i"]
+[ext_resource type="Texture2D" uid="uid://cf56w5vvsq823" path="res://Sprites/1.png" id="2_08xp1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_urjhg"]
 size = Vector3(0.163086, 0.166016, 0.0263672)
 
 [node name="Button" type="Area3D"]
-script = ExtResource("1_elyul")
+script = ExtResource("1_0180i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_urjhg")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.003
+no_depth_test = true
 texture_filter = 0
-texture = ExtResource("2_tyhrp")
+texture = ExtResource("2_08xp1")

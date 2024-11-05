@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqm50rvs3v6yh"]
+
+[ext_resource type="Script" path="res://Clickable/Pickable.gd" id="1_t7gaw"]
+[ext_resource type="Texture2D" uid="uid://cxdpkuhua72lc" path="res://Sprites/wall.png" id="2_kxl0f"]
+[ext_resource type="Script" path="res://Items/Phone/PhoneSprite.gd" id="3_t1i6k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tcrdk"]
+size = Vector3(1, 0.001, 1)
+
+[node name="Book" type="Area3D" node_paths=PackedStringArray("shape", "mainSprite")]
+script = ExtResource("1_t7gaw")
+shape = NodePath("CollisionShape3D")
+mainSprite = NodePath("Sprite3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tcrdk")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.005
+axis = 1
+texture = ExtResource("2_kxl0f")
+script = ExtResource("3_t1i6k")
