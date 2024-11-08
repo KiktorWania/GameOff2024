@@ -1,22 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqm50rvs3v6yh"]
+[gd_scene load_steps=11 format=3 uid="uid://dqm50rvs3v6yh"]
 
 [ext_resource type="Script" path="res://Clickable/Pickable.gd" id="1_t7gaw"]
-[ext_resource type="Texture2D" uid="uid://cxdpkuhua72lc" path="res://Sprites/wall.png" id="2_kxl0f"]
-[ext_resource type="Script" path="res://Items/Phone/PhoneSprite.gd" id="3_t1i6k"]
+[ext_resource type="Texture2D" uid="uid://dek4y1whtf1mq" path="res://Sprites/phone.png" id="2_5cr52"]
+[ext_resource type="Script" path="res://Items/Phone/MeshInstance3D.gd" id="3_qr1eq"]
+[ext_resource type="Script" path="res://Clickable/Clickable.gd" id="4_rmd5t"]
+[ext_resource type="FontFile" uid="uid://csadhx2xsynfe" path="res://Sprites/PixelArtFont.ttf" id="5_stbhh"]
+[ext_resource type="PackedScene" uid="uid://ci2vtoxc2ptgw" path="res://Clickable/ClickableLabel/ClickableLabel.tscn" id="6_0uirl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urfb1"]
+albedo_texture = ExtResource("2_5cr52")
+
+[sub_resource type="BoxMesh" id="BoxMesh_t3ya0"]
+size = Vector3(0.18, 0, 0.27)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tcrdk"]
 size = Vector3(1, 0.001, 1)
 
-[node name="Book" type="Area3D" node_paths=PackedStringArray("shape", "mainSprite")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_60yll"]
+size = Vector3(0.655273, 0.0727656, 0.341797)
+
+[node name="Book" type="Area3D" node_paths=PackedStringArray("mesh", "shape", "dragableArea")]
 script = ExtResource("1_t7gaw")
+mesh = NodePath("MeshInstance3D")
 shape = NodePath("CollisionShape3D")
-mainSprite = NodePath("Sprite3D")
+dragableArea = NodePath("DragArea")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.44003, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_urfb1")
+mesh = SubResource("BoxMesh_t3ya0")
+script = ExtResource("3_qr1eq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_tcrdk")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-pixel_size = 0.005
-axis = 1
-texture = ExtResource("2_kxl0f")
-script = ExtResource("3_t1i6k")
+[node name="DragArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
+script = ExtResource("4_rmd5t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DragArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0323768, 0.00362223)
+shape = SubResource("BoxShape3D_60yll")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(0.14, 0, 0, 0, -6.11959e-09, 0.14, 0, -0.14, -6.11959e-09, 0, 0.001, 0)
+alpha_scissor_threshold = 0.52
+texture_filter = 0
+text = "Skibidi"
+font = ExtResource("5_stbhh")
+font_size = 72
+outline_size = 0
+
+[node name="ClickableLabel" parent="." instance=ExtResource("6_0uirl")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.00190349, 0)

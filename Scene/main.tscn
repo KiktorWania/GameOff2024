@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://oqtnkt6n75vt"]
+[gd_scene load_steps=7 format=3 uid="uid://oqtnkt6n75vt"]
 
 [ext_resource type="Script" path="res://Scene/CameraControler.gd" id="1_kjgms"]
 [ext_resource type="PackedScene" uid="uid://nhhgtdnwhilf" path="res://Scene/Models/scena.glb" id="2_okfnv"]
 [ext_resource type="Texture2D" uid="uid://cp27pqrdq5d1o" path="res://icon.svg" id="3_hrbna"]
 [ext_resource type="PackedScene" uid="uid://b34u7h77nhjyj" path="res://Items/Phone/phone.tscn" id="4_4wpfb"]
 [ext_resource type="PackedScene" uid="uid://dqm50rvs3v6yh" path="res://Items/Book/Book.tscn" id="5_gnyox"]
+[ext_resource type="Script" path="res://Tools/NodeInspector.gd" id="6_vbx0u"]
 
 [node name="GameManager" type="Node3D"]
 
@@ -17,6 +18,9 @@ personNode = NodePath("../Room/Sprite3D")
 
 [node name="ItemSnapPoint" type="Node3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.24)
+
+[node name="ItemSnapPoint2" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.28)
 
 [node name="Room" type="Node3D" parent="."]
 
@@ -37,7 +41,11 @@ snapPoint = NodePath("../../Camera3D/ItemSnapPoint")
 
 [node name="Book" parent="Room" node_paths=PackedStringArray("snapPoint") instance=ExtResource("5_gnyox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.825, 1.36, -0.15)
-snapPoint = NodePath("../../Camera3D/ItemSnapPoint")
+snapPoint = NodePath("../../Camera3D/ItemSnapPoint2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.572389, 0.819982, 0, -0.819982, 0.572389, 0, 13.5407, 13.8204)
+
+[node name="InspectionHandler" type="Node" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("6_vbx0u")
+camera = NodePath("../Camera3D")
