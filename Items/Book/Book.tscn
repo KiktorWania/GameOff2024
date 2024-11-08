@@ -32,6 +32,7 @@ mesh = SubResource("BoxMesh_t3ya0")
 script = ExtResource("3_qr1eq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.074651, 0)
 shape = SubResource("BoxShape3D_tcrdk")
 
 [node name="DragArea" type="Area3D" parent="."]
@@ -52,4 +53,13 @@ font_size = 72
 outline_size = 0
 
 [node name="ClickableLabel" parent="." instance=ExtResource("6_0uirl")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.00190349, 0)
+transform = Transform3D(0.33, 0, 0, 0, -1.44248e-08, 0.33, 0, -0.33, -1.44248e-08, 0.179353, 0.00190349, 0)
+
+[node name="ClickableLabel2" parent="." instance=ExtResource("6_0uirl")]
+transform = Transform3D(0.45, 0, 0, 0, -1.96701e-08, 0.45, 0, -0.45, -1.96701e-08, -0.184591, 0.00190349, 0)
+
+[node name="ClickableLabel3" parent="." instance=ExtResource("6_0uirl")]
+transform = Transform3D(0.33, 0, 0, 0, -1.44248e-08, 0.33, 0, -0.33, -1.44248e-08, 0.00624438, 0.00190349, -0.0724461)
+
+[node name="ClickableLabel4" parent="." instance=ExtResource("6_0uirl")]
+transform = Transform3D(0.33, 0, 0, 0, -1.44248e-08, 0.33, 0, -0.33, -1.44248e-08, 0.00320174, 0.00190349, 0.0881127)

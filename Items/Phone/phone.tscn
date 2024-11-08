@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b34u7h77nhjyj"]
+[gd_scene load_steps=12 format=3 uid="uid://b34u7h77nhjyj"]
 
 [ext_resource type="Texture2D" uid="uid://dek4y1whtf1mq" path="res://Sprites/phone.png" id="1_pqp6l"]
 [ext_resource type="Script" path="res://Items/Phone/PhoneSprite.gd" id="3_1sy8b"]
 [ext_resource type="Script" path="res://Clickable/Clickable.gd" id="4_w65a4"]
 [ext_resource type="Script" path="res://Items/Phone/MeshInstance3D.gd" id="5_fn8mv"]
 [ext_resource type="PackedScene" uid="uid://ct3n3qje6ctvd" path="res://Items/Phone/Screens/LockScreen/LockScreen.tscn" id="5_hypep"]
+[ext_resource type="PackedScene" uid="uid://ci2vtoxc2ptgw" path="res://Clickable/ClickableLabel/ClickableLabel.tscn" id="6_d7vhu"]
 
 [sub_resource type="GDScript" id="GDScript_8ra0b"]
 script/source = "extends Pickable
@@ -68,5 +69,8 @@ shape = SubResource("BoxShape3D_8056g")
 material_override = SubResource("StandardMaterial3D_3j4u0")
 mesh = SubResource("BoxMesh_0hms0")
 script = ExtResource("5_fn8mv")
+
+[node name="ClickableLabel" parent="." instance=ExtResource("6_d7vhu")]
+transform = Transform3D(0.105, 0, 0, 0, -4.5897e-09, 0.105, 0, -0.105, -4.5897e-09, 0, 0.001, -0.108583)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

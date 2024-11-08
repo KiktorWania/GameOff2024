@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Clickable/ClickableLabel/ClickableLabel.gd" id="1_yigrh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rer1g"]
+size = Vector3(0.361084, 0.165039, 0.001)
 
 [node name="ClickableLabel" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
