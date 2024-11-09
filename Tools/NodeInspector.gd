@@ -42,9 +42,6 @@ func _process(delta):
 	else:
 		clearFocus()
 
-func updateLabels():
-	pass
-
 func inspection():
 	if(inspecting):
 		var canDraw = true
@@ -56,8 +53,16 @@ func inspection():
 		UI.setCanDraw(canDraw)
 		if canDraw:
 			UI.setPositions(camera.unproject_position(labels[0].global_position), camera.unproject_position(labels[1].global_position))
+			checkLabelsData(labels[0], labels[1])
 	else:
 		UI.setCanDraw(false)
+
+func checkLabelsData(l1 : ClickableLabel, l2 : ClickableLabel):
+	if(l1.label.text == l2.label.text):
+		UI.areNodesConnected(true)
+	else:
+		UI.areNodesConnected(false)
+
 func checkForLabelsOnly(hit):
 	onNewHit(hit)
 	if(hit is ClickableLabel and hit.wasClicked):

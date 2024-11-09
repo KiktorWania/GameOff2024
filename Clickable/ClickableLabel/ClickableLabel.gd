@@ -1,3 +1,4 @@
+@tool
 extends Clickable
 class_name ClickableLabel
 
@@ -6,8 +7,18 @@ class_name ClickableLabel
 @export var isBad : bool
 @export var badMask : int
 
+@export var text : String
+
 func _ready():
 	add_to_group("clickableLabels")
+
+func _process(delta):
+	super(delta)
+	if Engine.is_editor_hint():
+		if text:
+			label.text = text
+		else:
+			label.text = ""
 
 func activate():
 	shape.disabled = false

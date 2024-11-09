@@ -3,7 +3,10 @@ class_name CustomControl
 
 var pos1 : Vector2
 var pos2 : Vector2
+
 var canDraw = false
+
+@onready var mainLabel : Label = $Label
 
 var Label1 : ClickableLabel
 
@@ -30,8 +33,14 @@ func drawThreePointLine():
 		var pos3 = getMiddlePoint(pos1, pos2)
 		draw_line(pos1, pos3, Color.ALICE_BLUE, 3, true)
 		draw_line(pos3, pos2, Color.ALICE_BLUE, 3, true)
+	else:
+		mainLabel.text = ""
 
 func drawOutline(label : ClickableLabel):
 	pass
-	
 
+func areNodesConnected(b : bool):
+	if b:
+		mainLabel.text = "Connected"
+	else:
+		mainLabel.text = "Unconnected"

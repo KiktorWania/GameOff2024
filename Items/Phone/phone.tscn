@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b34u7h77nhjyj"]
+[gd_scene load_steps=11 format=3 uid="uid://b34u7h77nhjyj"]
 
 [ext_resource type="Texture2D" uid="uid://dek4y1whtf1mq" path="res://Sprites/phone.png" id="1_pqp6l"]
-[ext_resource type="Script" path="res://Items/Phone/PhoneSprite.gd" id="3_1sy8b"]
 [ext_resource type="Script" path="res://Clickable/Clickable.gd" id="4_w65a4"]
 [ext_resource type="Script" path="res://Items/Phone/MeshInstance3D.gd" id="5_fn8mv"]
 [ext_resource type="PackedScene" uid="uid://ct3n3qje6ctvd" path="res://Items/Phone/Screens/LockScreen/LockScreen.tscn" id="5_hypep"]
@@ -47,15 +46,8 @@ shape = SubResource("BoxShape3D_lwdjt")
 [node name="LockScreen" parent="." instance=ExtResource("5_hypep")]
 transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, -0.0365798)
 
-[node name="ItemSprite" type="Sprite3D" parent="."]
-visible = false
-axis = 1
-double_sided = false
-no_depth_test = true
-texture_filter = 0
-render_priority = -1
-texture = ExtResource("1_pqp6l")
-script = ExtResource("3_1sy8b")
+[node name="ClickableLabel" parent="LockScreen" instance=ExtResource("6_d7vhu")]
+transform = Transform3D(0.525, 0, 0, 0, 0.525, 2.13163e-14, 0, -2.13163e-14, 0.525, 0, 0.360016, 0.00500002)
 
 [node name="DragArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
@@ -69,8 +61,5 @@ shape = SubResource("BoxShape3D_8056g")
 material_override = SubResource("StandardMaterial3D_3j4u0")
 mesh = SubResource("BoxMesh_0hms0")
 script = ExtResource("5_fn8mv")
-
-[node name="ClickableLabel" parent="." instance=ExtResource("6_d7vhu")]
-transform = Transform3D(0.105, 0, 0, 0, -4.5897e-09, 0.105, 0, -0.105, -4.5897e-09, 0, 0.001, -0.108583)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

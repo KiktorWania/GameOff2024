@@ -1,16 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci2vtoxc2ptgw"]
+[gd_scene load_steps=4 format=3 uid="uid://ci2vtoxc2ptgw"]
 
 [ext_resource type="Script" path="res://Clickable/ClickableLabel/ClickableLabel.gd" id="1_yigrh"]
+[ext_resource type="FontFile" uid="uid://csadhx2xsynfe" path="res://Sprites/PixelArtFont.ttf" id="2_e3c0f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rer1g"]
-size = Vector3(0.361084, 0.165039, 0.001)
+size = Vector3(1.64014, 0.384766, 0.4104)
 
 [node name="ClickableLabel" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_yigrh")
 
 [node name="Label3D" type="Label3D" parent="."]
+modulate = Color(0.379218, 0.239003, 0.58125, 1)
 text = "dsds"
+font = ExtResource("2_e3c0f")
+font_size = 128
+outline_size = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2229, 2.78992e-08, 0.0839698)
 shape = SubResource("BoxShape3D_rer1g")
+disabled = true
