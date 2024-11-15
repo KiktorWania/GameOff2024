@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ct3n3qje6ctvd"]
+[gd_scene load_steps=19 format=3 uid="uid://ct3n3qje6ctvd"]
 
 [ext_resource type="Script" path="res://Items/Phone/Screens/LockScreen/LockScreen.gd" id="1_wmf2p"]
 [ext_resource type="Texture2D" uid="uid://dw125qvrfypee" path="res://Sprites/point-blank.png" id="2_uiuxt"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://chd1jueod61q" path="res://Sprites/7.png" id="12_p1unm"]
 [ext_resource type="Texture2D" uid="uid://bdd20mxonfili" path="res://Sprites/8.png" id="13_h487p"]
 [ext_resource type="Texture2D" uid="uid://ch0l6ois54gcm" path="res://Sprites/9.png" id="14_7ejng"]
+[ext_resource type="PackedScene" uid="uid://ci2vtoxc2ptgw" path="res://Clickable/ClickableLabel/ClickableLabel.tscn" id="15_hamsl"]
 
 [sub_resource type="Animation" id="Animation_a4xp1"]
 length = 0.001
@@ -314,3 +315,7 @@ texture = ExtResource("2_uiuxt")
 libraries = {
 "": SubResource("AnimationLibrary_4ckn7")
 }
+
+[node name="ClickableLabel" parent="." instance=ExtResource("15_hamsl")]
+transform = Transform3D(0.525, 0, 0, 0, 0.525, 2.13163e-14, 0, -2.13163e-14, 0.525, 0, 0.360016, 0.00500002)
+text = "dsds"

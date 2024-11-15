@@ -12,7 +12,6 @@ script = ExtResource("1_yigrh")
 
 [node name="Label3D" type="Label3D" parent="."]
 modulate = Color(0.379218, 0.239003, 0.58125, 1)
-text = "dsds"
 font = ExtResource("2_e3c0f")
 font_size = 128
 outline_size = 0

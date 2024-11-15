@@ -11,6 +11,7 @@ class_name ClickableLabel
 
 func _ready():
 	add_to_group("clickableLabels")
+	label.text = text
 
 func _process(delta):
 	super(delta)
